@@ -10,11 +10,9 @@ public class Machine {
         int exp = money - price;
         int size = 0;
         for (int i = 0; i < coin.length; i++) {
-            while(exp > 0){
-                if(exp >= coin[i]) {
-                    mass[size++] = coin[i];
-                    exp = exp - coin[i];
-                }
+            while(exp >= coin[i]){
+                mass[size++] = coin[i];
+                exp = exp - coin[i];
             }
         }
         return Arrays.copyOf(mass, size);
