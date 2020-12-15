@@ -9,13 +9,11 @@ public class Machine {
         int[] mass = new int[10];
         int exp = money - price;
         int size = 0;
-        while(exp > 0) {
-            for (int i = 0; i < coin.length; i++) {
+        for (int i = 0; i < coin.length; i++) {
+            while(exp > 0){
                 if(exp >= coin[i]) {
-                    mass[size] = coin[i];
+                    mass[size++] = coin[i];
                     exp = exp - coin[i];
-                    size++;
-                    break;
                 }
             }
         }
