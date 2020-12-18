@@ -14,12 +14,14 @@ public class Library {
         for (int i = 0; i < books.length; i++) {
             System.out.println(books[i].getNameBook() + " " + books[i].getPage());
         }
+
         Book temp = books[0];
         books[0] = books[3];
         books[3] = temp;
         for (int i = 0; i < books.length; i++) {
             System.out.println(books[i].getNameBook() + " " + books[i].getPage());
         }
+
         for (int i = 0; i < books.length; i++) {
             if("Clean code".equals(books[i].getNameBook())) {
                 System.out.println(books[i].getNameBook() + " " + books[i].getPage());
