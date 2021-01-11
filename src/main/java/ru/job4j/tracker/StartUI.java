@@ -12,5 +12,6 @@ public class StartUI {
         tracker.add(item3);
         System.out.println(Arrays.toString(tracker.findAll()));
         System.out.println(tracker.findById(3));
+        System.out.println(Arrays.toString(tracker.findByName("Pavel")));
     }
 }
