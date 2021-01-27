@@ -2,6 +2,8 @@ package ru.job4j.tracker;
 
 import org.junit.Test;
 
+import javax.sound.midi.Track;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertNull;
@@ -17,6 +19,47 @@ public class StartUITest{
         UserAction[] userActions = { new CreateAction(output), new Exit()};
         new StartUI(output).init(in, tracker, userActions);
         assertThat(tracker.findAll()[0].getName(), is("item name"));
+    }
+
+    @Test
+    public void whenShowAllAction() {
+        Output output = new StubOutput();
+        Input in = new StubInput(new String[] {"0", "1"});
+        Item item1 = new Item("Hulio");
+        Item item2 = new Item("Pedro");
+        Tracker tracker = new Tracker();
+        tracker.add(item1);
+        tracker.add(item2);
+        UserAction[] userActions = {new ShowAllItem(output), new Exit()};
+        new StartUI(output).init(in, tracker, userActions);
+        assertThat(tracker.findAll(), is(new Item[] {item1, item2}));
+    }
+
+    @Test
+    public void whenFindByName() {
+        Output out = new StubOutput();
+        Tracker tracker = new Tracker();
+        String name = "new Item name";
+        Item item = new Item(name);
+        tracker.add(item);
+        Input in = new StubInput(new String[] {"0", name, "1"});
+        UserAction[] userActions = {new FindItemByName(out), new Exit()};
+        new StartUI(out).init(in, tracker, userActions);
+        assertThat(tracker.findByName(name), is(new Item[] {item}));
+    }
+
+    @Test
+    public void whenFindId() {
+        Output output = new StubOutput();
+        Tracker tracker = new Tracker();
+        String name = "Item name";
+        Item item = new Item(name);
+        tracker.add(item);
+        Input in = new StubInput(new String[] {"0", item.getId() + "", "1"});
+        UserAction[] userActions = {new FindItemByID(output), new Exit()};
+        new StartUI(output).init(in, tracker, userActions);
+        assertThat(tracker.findById(item.getId()), is(item));
+
     }
 
     @Test
