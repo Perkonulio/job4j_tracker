@@ -4,6 +4,8 @@ import org.junit.Test;
 
 import javax.sound.midi.Track;
 
+import java.util.Arrays;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertNull;
@@ -24,15 +26,22 @@ public class StartUITest{
     @Test
     public void whenShowAllAction() {
         Output output = new StubOutput();
+        Output output1 = new StubOutput();
         Input in = new StubInput(new String[] {"0", "1"});
         Item item1 = new Item("Hulio");
         Item item2 = new Item("Pedro");
         Tracker tracker = new Tracker();
         tracker.add(item1);
         tracker.add(item2);
+        output.println(item1);
+        output.println(item2);
+        Item[] items = tracker.findAll();
+        for (int i = 0; i < items.length; i++) {
+            output1.println(items[i]);
+        }
         UserAction[] userActions = {new ShowAllItem(output), new Exit()};
         new StartUI(output).init(in, tracker, userActions);
-        assertThat(tracker.findAll(), is(new Item[] {item1, item2}));
+        assertThat(output1.toString(), is(output.toString()));
     }
 
     @Test
@@ -58,7 +67,7 @@ public class StartUITest{
         Input in = new StubInput(new String[] {"0", item.getId() + "", "1"});
         UserAction[] userActions = {new FindItemByID(output), new Exit()};
         new StartUI(output).init(in, tracker, userActions);
-        assertThat(tracker.findById(item.getId()), is(item));
+        assertThat(tracker.findById(item.getId()), is(item  ));
 
     }
 
