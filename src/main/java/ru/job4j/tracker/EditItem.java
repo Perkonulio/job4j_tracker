@@ -19,9 +19,9 @@ public class EditItem implements UserAction{
         String name = input.askStr("Select name:");
         Item item = new Item(name);
         if(tracker.replace(number, item)){
-            System.out.println("Replace sucseffful");
+            out.println("Replace sucseffful");
         } else {
-            System.out.println("Replace failed");
+            out.println("Replace failed");
         }
         return true;
     }

@@ -26,22 +26,17 @@ public class StartUITest{
     @Test
     public void whenShowAllAction() {
         Output output = new StubOutput();
-        Output output1 = new StubOutput();
         Input in = new StubInput(new String[] {"0", "1"});
         Item item1 = new Item("Hulio");
         Item item2 = new Item("Pedro");
         Tracker tracker = new Tracker();
         tracker.add(item1);
         tracker.add(item2);
-        output.println(item1);
-        output.println(item2);
-        Item[] items = tracker.findAll();
-        for (int i = 0; i < items.length; i++) {
-            output1.println(items[i]);
-        }
         UserAction[] userActions = {new ShowAllItem(output), new Exit()};
         new StartUI(output).init(in, tracker, userActions);
-        assertThat(output1.toString(), is(output.toString()));
+        String ls = System.lineSeparator();
+        assertThat(output.toString(), is("Menu" + ls + "------Show all item------" + ls + item1
+         + ls + item2 + ls + "Menu" + ls));
     }
 
     @Test
@@ -54,7 +49,10 @@ public class StartUITest{
         Input in = new StubInput(new String[] {"0", name, "1"});
         UserAction[] userActions = {new FindItemByName(out), new Exit()};
         new StartUI(out).init(in, tracker, userActions);
-        assertThat(tracker.findByName(name), is(new Item[] {item}));
+        String ls = System.lineSeparator();
+        out.println(item);
+        assertThat(out.toString(), is("Menu" + ls + "------Find items by name------"
+                 + ls + "Menu" + ls +  item + ls));
     }
 
     @Test
@@ -67,8 +65,9 @@ public class StartUITest{
         Input in = new StubInput(new String[] {"0", item.getId() + "", "1"});
         UserAction[] userActions = {new FindItemByID(output), new Exit()};
         new StartUI(output).init(in, tracker, userActions);
-        assertThat(tracker.findById(item.getId()), is(item  ));
-
+        String ls = System.lineSeparator();
+        assertThat(output.toString(), is("Menu" + ls + "------Find item by ID------"
+                + ls + item + ls + "Menu" + ls));
     }
 
     @Test
