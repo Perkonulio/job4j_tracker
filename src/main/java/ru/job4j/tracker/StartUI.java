@@ -1,6 +1,7 @@
 package ru.job4j.tracker;
 
 public class StartUI {
+
     private final Output out;
 
     public StartUI(Output out) {
@@ -30,7 +31,7 @@ public class StartUI {
 
     public static void main(String[] args) {
         Output output = new ConsoleOutput();
-        Tracker tracker = new Tracker();
+        Tracker tracker = Tracker.getInstance();
         Input input = new ValidateInput(output, new ConsoleInput());
         UserAction[] actions = {new CreateAction(output), new DeleteItem(output), new EditItem(output),
                 new FindItemByID(output), new FindItemByName(output), new ShowAllItem(output), new Exit()};
