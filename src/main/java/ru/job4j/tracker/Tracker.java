@@ -8,7 +8,6 @@ public final class Tracker {
     private static Tracker instance = null;
     private final List<Item> items = new ArrayList<>();
     private int ids = 1;
-    private int size = 0;
 
     private Tracker() {
     }
@@ -28,7 +27,7 @@ public final class Tracker {
 
     public Item findById(int id) {
         int index = indexOf(id);
-        return index != -1 ? items.get(id) : null;
+        return index != -1 ? items.get(index) : null;
     }
 
     public List<Item> findByName(String key) {
@@ -42,7 +41,7 @@ public final class Tracker {
     }
 
     public List<Item> findAll() {
-        List<Item> itemFindAll = new ArrayList<>();
+        List<Item> itemFindAll = new ArrayList<>(items);
         Collections.copy(itemFindAll, items);
         return itemFindAll;
     }
@@ -51,7 +50,8 @@ public final class Tracker {
         int result = -1;
         for(Item item : items) {
             if(item.getId() == id) {
-                result = id;
+                result = id - 1;
+                break;
             }
         }
         return result;
@@ -70,7 +70,7 @@ public final class Tracker {
     public boolean delete(int id) {
         int index = indexOf(id);
         if(index != -1) {
-            items.remove(items.get(index));
+            items.remove(index);
             return true;
         }
         return false;

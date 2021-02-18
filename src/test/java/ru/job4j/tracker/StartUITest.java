@@ -53,7 +53,7 @@ public class StartUITest{
         String ls = System.lineSeparator();
         out.println(item);
         assertThat(out.toString(), is("Menu" + ls + "------Find items by name------"
-                 + ls + "Menu" + ls +  item + ls));
+                 + ls +  item + ls));
     }
 
     @Test
