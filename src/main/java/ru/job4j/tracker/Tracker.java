@@ -41,16 +41,14 @@ public final class Tracker {
     }
 
     public List<Item> findAll() {
-        List<Item> itemFindAll = new ArrayList<>(items);
-        Collections.copy(itemFindAll, items);
-        return itemFindAll;
+        return items;
     }
 
     private int indexOf(int id) {
         int result = -1;
-        for(Item item : items) {
-            if(item.getId() == id) {
-                result = id - 1;
+        for (int i = 0; i < items.size(); i++){
+            if(items.get(i).getId() == id) {
+                result = i;
                 break;
             }
         }

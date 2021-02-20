@@ -51,9 +51,8 @@ public class StartUITest{
         List<UserAction> userActions = Arrays.asList(new FindItemByName(out), new Exit());
         new StartUI(out).init(in, tracker, userActions);
         String ls = System.lineSeparator();
-        out.println(item);
         assertThat(out.toString(), is("Menu" + ls + "------Find items by name------"
-                 + ls +  item + ls));
+                 + ls +  item + ls + "Menu" + ls));
     }
 
     @Test
