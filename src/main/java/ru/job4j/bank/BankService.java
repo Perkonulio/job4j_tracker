@@ -6,17 +6,16 @@ public class BankService {
     private Map<User, List<Account>> users = new HashMap<>();
 
     public void addUser(User user) {
-        if(!users.containsKey(user)) {
-            users.put(user, new ArrayList<Account>());
-        }
+        users.putIfAbsent(user, new ArrayList<>());
     }
 
     public void addAccount(String passport, Account account) {
-        User user = findByPassport(passport);
-        List<Account> list = users.get(user);
-        if(!list.contains(account)) {
-            list.add(account);
-            users.put(user, list);
+        if(findByPassport(passport) != null) {
+            User user = findByPassport(passport);
+            List<Account> list = users.get(user);
+            if(!list.contains(account)) {
+                list.add(account);
+            }
         }
     }
 
@@ -31,7 +30,7 @@ public class BankService {
 
     public Account findByRequisite(String passport, String requisite) {
         User user = findByPassport(passport);
-        if(users.containsKey(user)) {
+        if(user != null) {
             for(Account account : users.get(user)) {
                 if(account.getRequisite().equals(requisite)) {
                     return account;
@@ -43,17 +42,11 @@ public class BankService {
 
     public boolean transferMoney (String srcPassport, String srcRequisite, String destPassport,
                                   String destRequisite, double amount) {
-        User user1 = findByPassport(srcPassport);
-        User user2 = findByPassport(destPassport);
-        List<Account> list1 = users.get(user1);
-        List<Account> list2= users.get(user2);
         Account account1 = findByRequisite(srcPassport, srcRequisite);
         Account account2 = findByRequisite(destPassport, destRequisite);
-        if(list1.contains(account1) && account1.getBalance() >= amount) {
+        if(account1 != null && account2 != null &&account1.getBalance() >= amount) {
             account2.setBalance(amount + account2.getBalance());
             account1.setBalance(account1.getBalance() - amount);
-            users.putIfAbsent(user1, list1);
-            users.putIfAbsent(user2, list2);
         }
         return false;
     }
