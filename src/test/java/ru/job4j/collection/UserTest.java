@@ -25,8 +25,6 @@ public class UserTest {
     public void whenComparePetrVSIvan() {
         int result = new User("Petr", 32).compareTo(new User("Ivan", 28));
         assertThat(result, is(greaterThan(0)));
-
-
     }
 
 }
