@@ -63,6 +63,6 @@ public class JobTest {
         CompareNameUp compareNameUp = new CompareNameUp();
         List<Job> list = Arrays.asList(worker1, worker2);
         list.sort(compareNameUp.thenComparing(comparePriorityUp));
-        System.out.println(list);
+        assertThat(list, is(Arrays.asList(worker1, worker2)));
     }
 }
