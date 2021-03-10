@@ -18,7 +18,7 @@ public class StartUITest {
     public void whenCreateItem() {
         Output output = new StubOutput();
         Input in = new StubInput(new String[] {"0", "item name", "1"});
-        Tracker tracker = Tracker.getInstance();
+        Tracker tracker = new Tracker();
         List<UserAction> userActions = Arrays.asList(new CreateAction(output), new Exit());
         new StartUI(output).init(in, tracker, userActions);
         assertThat(tracker.findAll().get(0).getName(), is("item name"));
@@ -30,7 +30,7 @@ public class StartUITest {
         Input in = new StubInput(new String[] {"0", "1"});
         Item item1 = new Item("Hulio");
         Item item2 = new Item("Pedro");
-        Tracker tracker = Tracker.getInstance();
+        Tracker tracker = new Tracker();
         tracker.add(item1);
         tracker.add(item2);
         List<UserAction> userActions = Arrays.asList(new ShowAllItem(output), new Exit());
@@ -43,7 +43,7 @@ public class StartUITest {
     @Test
     public void whenFindByName() {
         Output out = new StubOutput();
-        Tracker tracker = Tracker.getInstance();
+        Tracker tracker = new Tracker();
         String name = "new Item name";
         Item item = new Item(name);
         tracker.add(item);
@@ -58,7 +58,7 @@ public class StartUITest {
     @Test
     public void whenFindId() {
         Output output = new StubOutput();
-        Tracker tracker = Tracker.getInstance();
+        Tracker tracker = new Tracker();
         String name = "Item name";
         Item item = new Item(name);
         tracker.add(item);
@@ -73,7 +73,7 @@ public class StartUITest {
     @Test
     public void whenReplaceItem() {
         Output output = new StubOutput();
-        Tracker tracker = Tracker.getInstance();
+        Tracker tracker = new Tracker();
         Item item = new Item("new Item");
         tracker.add(item);
         String replaceName = "New Item name";
@@ -87,7 +87,7 @@ public class StartUITest {
     @Test
     public void whenDeleteItem() {
         Output output = new StubOutput();
-        Tracker tracker = Tracker.getInstance();
+        Tracker tracker = new Tracker();
         Item item = new Item("new Item");
         tracker.add(item);
         Input in = new StubInput(new String[] {"0", item.getId() + "", "1"});
@@ -100,7 +100,7 @@ public class StartUITest {
     public void whenExit() {
         Output output = new StubOutput();
         Input in = new StubInput(new String[] {"0"});
-        Tracker tracker = Tracker.getInstance();
+        Tracker tracker = new Tracker();
         List<UserAction> userActions = Arrays.asList(new Exit());
         new StartUI(output).init(in, tracker, userActions);
         assertThat(output.toString(), is("Menu" + System.lineSeparator()));
@@ -110,7 +110,7 @@ public class StartUITest {
     public void whenInvalidExit() {
         Output out = new StubOutput();
         Input in = new StubInput(new String[] {"-1", "0"});
-        Tracker tracker = Tracker.getInstance();
+        Tracker tracker = new Tracker();
         List<UserAction> userActions = Arrays.asList(new Exit());
         new StartUI(out).init(in, tracker, userActions);
         assertThat(out.toString(), is(String.format(
