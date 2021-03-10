@@ -10,9 +10,9 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class ConvertMatrixToListTest {
 
     @Test
-    public void ConvertMatrixTest() {
+    public void convertMatrixTest() {
         ConvertMatrixToList list = new ConvertMatrixToList();
-        int[][] input = { {1, 2} , {3, 4}};
+        int[][] input = {{1, 2}, {3, 4}};
 
         List<Integer> expect = Arrays.asList(1, 2, 3, 4);
         assertThat(expect, is(list.toList(input)));

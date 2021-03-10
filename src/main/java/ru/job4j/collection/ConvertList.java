@@ -8,13 +8,11 @@ import java.util.List;
 public class ConvertList {
     public List<Integer> convert(List<int[]> array) {
         List<Integer> list = new ArrayList<>();
-        for(int[] value : array) {
-            for(int number : value) {
+        for (int[] value : array) {
+            for (int number : value) {
                 list.add(number);
             }
         }
         return list;
     }
-
-
 }

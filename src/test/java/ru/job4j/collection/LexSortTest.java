@@ -9,8 +9,8 @@ public class LexSortTest {
 
     @Test
     public void sortNum1and2and10() {
-        String[] put = { "10. Task.", "2. Task.", "1. Task."};
-        String[] out = { "1. Task.", "2. Task.", "10. Task."};
+        String[] put = {"10. Task.", "2. Task.", "1. Task."};
+        String[] out = {"1. Task.", "2. Task.", "10. Task."};
         Arrays.sort(put, new LexSort());
         assertThat(put, is(out));
     }

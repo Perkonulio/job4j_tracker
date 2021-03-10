@@ -2,7 +2,7 @@ package ru.job4j.pojo;
 
 public class Library {
     public static void main(String[] args) {
-        Book book = new Book("Clean code" , 15);
+        Book book = new Book("Clean code", 15);
         Book book1 = new Book("Adventure", 25);
         Book book2 = new Book("Romantic", 50);
         Book book3 = new Book("Triller", 150);
@@ -23,7 +23,7 @@ public class Library {
         }
 
         for (int i = 0; i < books.length; i++) {
-            if("Clean code".equals(books[i].getNameBook())) {
+            if ("Clean code".equals(books[i].getNameBook())) {
                 System.out.println(books[i].getNameBook() + " " + books[i].getPage());
             }
         }

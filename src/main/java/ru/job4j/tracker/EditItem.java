@@ -1,6 +1,6 @@
 package ru.job4j.tracker;
 
-public class EditItem implements UserAction{
+public class EditItem implements UserAction {
     private final Output out;
 
     public EditItem(Output out) {
@@ -18,7 +18,7 @@ public class EditItem implements UserAction{
         int number = input.askInt("Select id");
         String name = input.askStr("Select name:");
         Item item = new Item(name);
-        if(tracker.replace(number, item)){
+        if (tracker.replace(number, item)) {
             out.println("Replace sucseffful");
         } else {
             out.println("Replace failed");

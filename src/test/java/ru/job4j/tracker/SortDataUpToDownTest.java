@@ -8,8 +8,8 @@ import java.util.List;
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.CoreMatchers.is;
 
-
 public class SortDataUpToDownTest {
+
     @Test
     public void whenDataUp() {
         Item item1 = new Item("Pedro");
@@ -20,9 +20,4 @@ public class SortDataUpToDownTest {
         List<Item> listExpected = Arrays.asList(item1, item2);
         assertThat(list, is(listExpected));
     }
-
-
-
-
-
 }

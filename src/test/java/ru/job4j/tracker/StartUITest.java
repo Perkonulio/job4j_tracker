@@ -12,14 +12,14 @@ import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 
-public class StartUITest{
+public class StartUITest {
 
     @Test
     public void whenCreateItem() {
         Output output = new StubOutput();
         Input in = new StubInput(new String[] {"0", "item name", "1"});
         Tracker tracker = Tracker.getInstance();
-        List<UserAction> userActions = Arrays.asList( new CreateAction(output), new Exit());
+        List<UserAction> userActions = Arrays.asList(new CreateAction(output), new Exit());
         new StartUI(output).init(in, tracker, userActions);
         assertThat(tracker.findAll().get(0).getName(), is("item name"));
     }
@@ -118,7 +118,4 @@ public class StartUITest{
                 + "Wrong input, u can select: 0.. 0%n"
                 + "Menu%n")));
     }
-
-
-
 }

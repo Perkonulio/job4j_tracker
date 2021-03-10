@@ -12,7 +12,7 @@ public class UniqueText {
             equality.add(words);
         }
         for (String duplicate : duplicateText) {
-            if(!equality.contains(duplicate)) {
+            if (!equality.contains(duplicate)) {
                 result = false;
                 break;
             }

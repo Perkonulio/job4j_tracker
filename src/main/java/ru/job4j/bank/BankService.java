@@ -11,17 +11,17 @@ public class BankService {
 
     public void addAccount(String passport, Account account) {
         User user = findByPassport(passport);
-        if(user != null) {
+        if (user != null) {
             List<Account> list = users.get(user);
-            if(!list.contains(account)) {
+            if (!list.contains(account)) {
                 list.add(account);
             }
         }
     }
 
     public User findByPassport(String passport) {
-        for(User user : users.keySet()) {
-            if(passport.equals(user.getPassport())) {
+        for (User user : users.keySet()) {
+            if (passport.equals(user.getPassport())) {
                 return user;
             }
         }
@@ -30,9 +30,9 @@ public class BankService {
 
     public Account findByRequisite(String passport, String requisite) {
         User user = findByPassport(passport);
-        if(user != null) {
-            for(Account account : users.get(user)) {
-                if(account.getRequisite().equals(requisite)) {
+        if (user != null) {
+            for (Account account : users.get(user)) {
+                if (account.getRequisite().equals(requisite)) {
                     return account;
                 }
             }
@@ -40,19 +40,14 @@ public class BankService {
         return null;
     }
 
-    public boolean transferMoney (String srcPassport, String srcRequisite, String destPassport,
+    public boolean transferMoney(String srcPassport, String srcRequisite, String destPassport,
                                   String destRequisite, double amount) {
         Account account1 = findByRequisite(srcPassport, srcRequisite);
         Account account2 = findByRequisite(destPassport, destRequisite);
-        if(account1 != null && account2 != null &&account1.getBalance() >= amount) {
+        if (account1 != null && account2 != null && account1.getBalance() >= amount) {
             account2.setBalance(amount + account2.getBalance());
             account1.setBalance(account1.getBalance() - amount);
         }
         return false;
     }
-
-
-
-
-
 }

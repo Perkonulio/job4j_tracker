@@ -12,13 +12,13 @@ public class StartUI {
         this.out = out;
     }
 
-    public void init (Input input, Tracker tracker, List<UserAction> actions) {
+    public void init(Input input, Tracker tracker, List<UserAction> actions) {
         boolean run = true;
-        while(run) {
+        while (run) {
             this.showMenu(actions);
             int num = input.askInt("Select: ");
-            if(num < 0 || num >= actions.size()) {
-                out.println("Wrong input, u can select: 0.. " + (actions.size()- 1));
+            if (num < 0 || num >= actions.size()) {
+                out.println("Wrong input, u can select: 0.. " + (actions.size() - 1));
                 continue;
             }
             UserAction action = actions.get(num);
@@ -37,8 +37,10 @@ public class StartUI {
         Output output = new ConsoleOutput();
         Tracker tracker = Tracker.getInstance();
         Input input = new ValidateInput(output, new ConsoleInput());
-        List<UserAction> actions = Arrays.asList( new CreateAction(output), new DeleteItem(output), new EditItem(output),
-                new FindItemByID(output), new FindItemByName(output), new ShowAllItem(output), new Exit() );
+        List<UserAction> actions = Arrays.asList(new CreateAction(output),
+                new DeleteItem(output), new EditItem(output),
+                new FindItemByID(output), new FindItemByName(output),
+                new ShowAllItem(output), new Exit());
         new StartUI(output).init(input, tracker, actions);
     }
 }

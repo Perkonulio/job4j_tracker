@@ -10,7 +10,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class PhoneDictionaryTest {
 
     @Test
-    public void FindByName() {
+    public void findByName() {
         PhoneDictionary phoneDictionary = new PhoneDictionary();
         Person person = new Person("Petr", "Arsentev",
                 "545833", "Kaluga");

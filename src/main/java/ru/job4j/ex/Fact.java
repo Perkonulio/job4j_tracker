@@ -8,7 +8,7 @@ public class Fact {
 
     public int calc(int i) {
         int result = 1;
-        if(i < 0) {
+        if (i < 0) {
             throw new IllegalArgumentException("Значение не может быть меньше нуля");
         }
         for (int j = 1; j <= i; j++) {

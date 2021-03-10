@@ -13,7 +13,4 @@ public class PassportOfficeTest {
         pass.add(citizen);
         assertThat(pass.getCitizens(citizen.getPassport()), is(citizen));
     }
-
-
-
 }

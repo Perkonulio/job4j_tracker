@@ -7,7 +7,7 @@ public class FindMaxLength {
         for (int index = 0; index < shops.length; index++) {
             String el = shops[index];
             if (el != null) {
-                if(el.length() > max){
+                if (el.length() > max) {
                 max = el.length();
                 }
             }

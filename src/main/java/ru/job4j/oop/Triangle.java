@@ -27,15 +27,9 @@ public class Triangle {
         double ac = first.distance(third);
         double bc = second.distance(third);
         double p = halfPeriod(ab, ac, bc);
-        if(this.existOfTriangle(ab, ac, bc)) {
+        if (this.existOfTriangle(ab, ac, bc)) {
             sum = sqrt(p * (p - ab) * (p - ac) * (p - bc));
         }
         return sum;
     }
-
-
-
-
-
-
 }

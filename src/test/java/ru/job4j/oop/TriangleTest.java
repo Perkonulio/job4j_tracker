@@ -15,6 +15,4 @@ public class TriangleTest extends TestCase {
         double result = triangle.area();
         assertThat(result, closeTo(8, 0.001));
     }
-
-
 }
