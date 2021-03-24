@@ -18,10 +18,22 @@ public class SearchFolderTest {
                 new Folder("bug", 90)
         );
         Predicate<Folder> pred = folder
-                -> folder.getSize() > 100 || folder.getName().contains("bug");
-        List<Folder> expected = List.of(new Folder("fix", 110),
+                -> folder.getSize() > 100;
+        List<Folder> expected = List.of(new Folder("fix", 110));
+        List<Folder> result = SearchFolder.filterList(list, pred);
+        assertThat(result, is(expected));
+    }
+
+    @Test
+    public void FilterName() {
+        List<Folder> list = List.of(
+                new Folder("fix", 110),
                 new Folder("bug", 75),
-                new Folder("bug", 90));
+                new Folder("bug", 90)
+        );
+        Predicate<Folder> pred = folder
+                -> folder.getName().contains("bug");
+        List<Folder> expected = List.of(new Folder("bug", 75), new Folder("bug", 90));
         List<Folder> result = SearchFolder.filterList(list, pred);
         assertThat(result, is(expected));
     }
