@@ -10,15 +10,13 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class PhoneDictionaryTest {
 
     @Test
-    public void findByName() {
-        PhoneDictionary phoneDictionary = new PhoneDictionary();
-        Person person = new Person("Petr", "Arsentev",
-                "545833", "Kaluga");
-        Person person1 = new Person("Pedro", "Escobarovich", "5553535", "Columbia");
-        phoneDictionary.addPerson(person);
-        phoneDictionary.addPerson(person1);
-        ArrayList<Person> persons = phoneDictionary.showAllPerson("3");
-        assertThat(persons.get(1).getSurname(), is("Escobarovich"));
+    public void whenFindByName() {
+        PhoneDictionary phones = new PhoneDictionary();
+        phones.addPerson(
+                new Person("Petr", "Arsentev", "534872", "Bryansk")
+        );
+        ArrayList<Person> persons = phones.showAllPerson("Petr");
+        assertThat(persons.get(0).getSurname(), is("Arsentev"));
     }
 
 }
