@@ -13,7 +13,7 @@ public class RefMethod {
     }
 
     public static void cutOut(String name) {
-        if(name.length() > 10) {
+        if (name.length() > 10) {
             System.out.println(name.substring(0, 10) + "...");
         } else {
             System.out.println(name);

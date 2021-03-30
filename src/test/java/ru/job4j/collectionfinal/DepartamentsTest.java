@@ -1,4 +1,4 @@
-package ru.job4j.collection_final;
+package ru.job4j.collectionfinal;
 
 import org.junit.Test;
 
@@ -21,7 +21,7 @@ public class DepartamentsTest {
     @Test
     public void whenAscSortChange() {
         List<String> input = Arrays.asList("k1", "k1/sk1/ssk2", "k2");
-        List<String> expect = Arrays.asList("k1", "k1/sk1","k1/sk1/ssk2", "k2");
+        List<String> expect = Arrays.asList("k1", "k1/sk1", "k1/sk1/ssk2", "k2");
         List<String> result = Departaments.fillGaps(input);
         Departaments.sortAsc(result);
         assertThat(result, is(expect));
@@ -30,7 +30,7 @@ public class DepartamentsTest {
     @Test
     public void whenDescSortChange() {
         List<String> input = Arrays.asList("k1", "k1/sk1/ssk2", "k2");
-        List<String> expect = Arrays.asList("k2", "k1","k1/sk1", "k1/sk1/ssk2");
+        List<String> expect = Arrays.asList("k2", "k1", "k1/sk1", "k1/sk1/ssk2");
         List<String> result = Departaments.fillGaps(input);
         Departaments.sortDesc(result);
         assertThat(result, is(expect));

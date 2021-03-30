@@ -1,4 +1,4 @@
-package ru.job4j.collection_final;
+package ru.job4j.collectionfinal;
 
 import java.util.Comparator;
 

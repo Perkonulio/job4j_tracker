@@ -1,17 +1,15 @@
 package ru.job4j.function;
 
 import org.junit.Test;
-
 import java.util.List;
 import java.util.function.Predicate;
-
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
 
 public class SearchFolderTest {
 
     @Test
-    public void FilterSize() {
+    public void filterSize() {
         List<Folder> list = List.of(
                 new Folder("fix", 110),
                 new Folder("bug", 75),
@@ -25,7 +23,7 @@ public class SearchFolderTest {
     }
 
     @Test
-    public void FilterName() {
+    public void filterName() {
         List<Folder> list = List.of(
                 new Folder("fix", 110),
                 new Folder("bug", 75),

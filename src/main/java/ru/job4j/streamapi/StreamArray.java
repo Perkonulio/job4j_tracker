@@ -1,6 +1,5 @@
-package ru.job4j.streamAPI;
+package ru.job4j.streamapi;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;

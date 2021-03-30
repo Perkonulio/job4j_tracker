@@ -21,11 +21,15 @@ public class Folder {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Folder folder = (Folder) o;
-        return size == folder.size &&
-                Objects.equals(name, folder.name);
+        return size == folder.size
+                && Objects.equals(name, folder.name);
     }
 
     @Override
@@ -35,9 +39,9 @@ public class Folder {
 
     @Override
     public String toString() {
-        return "Folder{" +
-                "name='" + name + '\'' +
-                ", size=" + size +
-                '}';
+        return "Folder{"
+                + "name='" + name + '\''
+                + ", size=" + size
+                + '}';
     }
 }

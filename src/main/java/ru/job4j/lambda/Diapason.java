@@ -6,7 +6,7 @@ import java.util.function.Function;
 
 public class Diapason {
     public static List<Double> diapason(int start, int end,
-                                        Function<Double, Double> func ) {
+                                        Function<Double, Double> func) {
         List<Double> list = new ArrayList<>();
         for (double index = start; index < end; index++) {
             list.add(func.apply(index));

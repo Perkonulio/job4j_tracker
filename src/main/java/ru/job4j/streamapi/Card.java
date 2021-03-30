@@ -1,8 +1,9 @@
-package ru.job4j.streamAPI;
+package ru.job4j.streamapi;
 
 enum Suit {
     Diamonds, Hearts, Spades, Club
 }
+
 enum Value {
     V_6, V_7, V_8
 }
@@ -18,9 +19,9 @@ public class Card {
 
     @Override
     public String toString() {
-        return "Card{" +
-                "suit=" + suit +
-                ", value=" + value +
-                '}';
+        return "Card{"
+                + "suit=" + suit
+                + ", value=" + value
+                + '}';
     }
 }

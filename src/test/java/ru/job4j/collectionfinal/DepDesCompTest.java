@@ -1,4 +1,4 @@
-package ru.job4j.collection_final;
+package ru.job4j.collectionfinal;
 
 import org.junit.Test;
 
@@ -6,8 +6,7 @@ import static org.hamcrest.Matchers.lessThan;
 import static org.junit.Assert.*;
 import static org.hamcrest.Matchers.greaterThan;
 
-
-public class DepDesCompTest  {
+public class DepDesCompTest {
 
     @Test
     public void compare() {
@@ -26,6 +25,4 @@ public class DepDesCompTest  {
         );
         assertThat(rsl, lessThan(0));
     }
-
-
 }

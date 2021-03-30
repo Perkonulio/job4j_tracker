@@ -16,7 +16,7 @@ public class MatrixToListTest {
 
     @Test
     public void whenExpectedTrue() {
-        Integer[][] mass = new Integer[][] {
+        Integer[][] mass = new Integer[][]{
                 {1, 2},
                 {3, 4}
         };
@@ -24,7 +24,5 @@ public class MatrixToListTest {
         MatrixToList mat = new MatrixToList();
         List<Integer> listForExpect = mat.matrixToList(mass);
         assertThat(listForExpect, is(expected));
-
-
     }
 }
