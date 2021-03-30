@@ -12,7 +12,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class FullSearchTest {
     @Test
     public void exctractNumberTest() {
-        List<Task> list = Arrays.asList(new Task("1", "Desc1"),
+        List<Task> list = List.of(new Task("1", "Desc1"),
                 new Task("2", "Desc2"), new Task("1", "Desc1"));
         Set<String> expected = new HashSet<>(Arrays.asList("1", "2"));
         assertThat(FullSearch.extractNumber(list), is(expected));

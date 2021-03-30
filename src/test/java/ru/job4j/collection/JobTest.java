@@ -18,9 +18,9 @@ public class JobTest {
         Job worker1 = new Job("Hulio", 25);
         Job worker2 = new Job("Pedro", 34);
         CompareNameUp comparator = new CompareNameUp();
-        List<Job> list = Arrays.asList(worker1, worker2);
+        List<Job> list = List.of(worker1, worker2);
         list.sort(comparator);
-        assertThat(list, is(Arrays.asList(worker1, worker2)));
+        assertThat(list, is(List.of(worker1, worker2)));
     }
 
     @Test
@@ -28,9 +28,9 @@ public class JobTest {
         Job worker1 = new Job("Hulio", 44);
         Job worker2 = new Job("Pedro", 34);
         ComparePriorityUp comparator = new ComparePriorityUp();
-        List<Job> list = Arrays.asList(worker1, worker2);
+        List<Job> list = List.of(worker1, worker2);
         list.sort(comparator);
-        assertThat(list, is(Arrays.asList(worker2, worker1)));
+        assertThat(list, is(List.of(worker2, worker1)));
     }
 
     @Test
