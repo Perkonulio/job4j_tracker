@@ -3,10 +3,8 @@ package ru.job4j.collection;
 
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
+
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.Matchers.lessThan;
 import static org.junit.Assert.assertThat;
@@ -15,12 +13,16 @@ public class JobTest {
 
     @Test
     public void whenNameUpComparator() {
-        Job worker1 = new Job("Hulio", 25);
-        Job worker2 = new Job("Pedro", 34);
         CompareNameUp comparator = new CompareNameUp();
-        List<Job> list = List.of(worker1, worker2);
+        List<Job> list = Arrays.asList(
+                new Job("Hulio", 25),
+                new Job("Pedro", 34)
+        );
         list.sort(comparator);
-        assertThat(list, is(List.of(worker1, worker2)));
+        assertThat(list, is(List.of(
+                new Job("Hulio", 25),
+                new Job("Pedro", 34)))
+        );
     }
 
     @Test
@@ -28,7 +30,7 @@ public class JobTest {
         Job worker1 = new Job("Hulio", 44);
         Job worker2 = new Job("Pedro", 34);
         ComparePriorityUp comparator = new ComparePriorityUp();
-        List<Job> list = List.of(worker1, worker2);
+        List<Job> list = Arrays.asList(worker1, worker2);
         list.sort(comparator);
         assertThat(list, is(List.of(worker2, worker1)));
     }
