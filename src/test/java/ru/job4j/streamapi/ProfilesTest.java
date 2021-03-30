@@ -1,10 +1,7 @@
-package ru.job4j.streamAPI;
+package ru.job4j.streamapi;
 
-import com.sun.nio.sctp.PeerAddressChangeNotification;
-import junit.framework.TestCase;
 import org.junit.Test;
 
-import java.util.Comparator;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
