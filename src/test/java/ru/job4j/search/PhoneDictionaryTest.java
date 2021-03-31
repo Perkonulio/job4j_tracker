@@ -11,11 +11,11 @@ public class PhoneDictionaryTest {
 
     @Test
     public void whenFindByName() {
-        PhoneDictionary phones = new PhoneDictionary();
+        var phones = new PhoneDictionary();
         phones.addPerson(
                 new Person("Petr", "Arsentev", "534872", "Bryansk")
         );
-        ArrayList<Person> persons = phones.showAllPerson("Petr");
+        var persons = phones.showAllPerson("Petr");
         assertThat(persons.get(0).getSurname(), is("Arsentev"));
     }
 
