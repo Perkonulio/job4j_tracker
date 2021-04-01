@@ -1,12 +1,11 @@
 package ru.job4j.collegefunc;
+
 import org.junit.Test;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
-
 
 public class CollegeTest {
     @Test
@@ -89,7 +88,7 @@ public class CollegeTest {
                         new Subject("Math", 70),
                         new Subject("English", 85)
                 ),
-                new Student("Student2", "000002","201-18-15" ),
+                new Student("Student2", "000002", "201-18-15"),
                 Set.of(
                         new Subject("Economic", 75),
                         new Subject("Sociology", 65)

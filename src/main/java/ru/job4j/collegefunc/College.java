@@ -26,10 +26,10 @@ public class College {
     public Optional<Subject> findBySubjectName(String account, String lessonName) {
         Optional<Subject> result = Optional.empty();
         Optional<Student> s = findByAccount(account);
-        if(s.isPresent()) {
+        if (s.isPresent()) {
             Set<Subject> subjects = students.get(s.get());
             for (Subject subject : subjects) {
-                if(subject.getLessonName().equals(lessonName)) {
+                if (subject.getLessonName().equals(lessonName)) {
                     result = Optional.of(subject);
                     break;
                 }
