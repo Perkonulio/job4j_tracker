@@ -3,23 +3,26 @@ package ru.job4j.crosszero;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class Analyze {
 
     public static double averageScore(Stream<Pupil> stream) {
-        int counter = 0;
-        return stream.flatMap(subjects -> Stream.of(subjects.getSubjects())
-                .flatMap(value -> Stream.of(value.get(counter))))
-                .mapToInt(value -> Stream.of(value.getScore()))
+        return stream.flatMap(subjects -> subjects.getSubjects().stream())
+                .flatMap(value -> Stream.of(value.getScore()))
+                .mapToDouble(value -> value)
                 .average()
-                .orElse(0);
-
+                .orElse(0D);
     }
 
     public static List<Tuple> averageScoreBySubject(Stream<Pupil> stream) {
-        return List.of();
+        return stream.map(pupil -> new Tuple(pupil.getName(), stream.flatMap(subjects -> subjects.getSubjects().stream())
+                .flatMap(value -> Stream.of(value.getScore()))
+                .mapToDouble(value -> value)
+                .average().orElse(0D)))
+                .collect(Collectors.toList());
     }
 
     public static List<Tuple> averageScoreByPupil(Stream<Pupil> stream) {

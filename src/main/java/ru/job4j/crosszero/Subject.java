@@ -8,10 +8,10 @@ import java.util.Objects;
  */
 public class Subject {
     private String lessonName;
-    private int score;
+    private double score;
 
-    public Subject(String name, int score) {
-        this.lessonName = name;
+    public Subject(String lessonName, double score) {
+        this.lessonName = lessonName;
         this.score = score;
     }
 
@@ -19,7 +19,7 @@ public class Subject {
         return lessonName;
     }
 
-    public int getScore() {
+    public double getScore() {
         return score;
     }
 
@@ -32,7 +32,7 @@ public class Subject {
             return false;
         }
         Subject subject = (Subject) o;
-        return score == subject.score
+        return Double.compare(subject.score, score) == 0
                 && Objects.equals(lessonName, subject.lessonName);
     }
 
