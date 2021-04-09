@@ -6,9 +6,7 @@ import java.util.*;
 public class FreezeStr {
     public static boolean eq(String left, String right) {
         Map<Character, Integer> map1 = new HashMap<>();
-        Map<Character, Integer> map2 = new HashMap<>();
         char[] leftChar = left.toCharArray();
-        char[] rightChar = right.toCharArray();
         for (char character : leftChar) {
             int counter = 1;
             if (map1.containsKey(character)) {
@@ -17,22 +15,16 @@ public class FreezeStr {
             }
             map1.put(character, counter);
         }
-
-        for (char character : rightChar) {
-            int counter = 1;
-            if (map2.containsKey(character)) {
-                counter = map2.get(character);
-                counter++;
-            }
-            map2.put(character, counter);
-        }
-
-        for (char character : map1.keySet()) {
-            if (!map2.containsKey(character) || !map1.get(character).equals(map2.get(character))) {
+        char[] rightChar = right.toCharArray();
+        for (Character character : rightChar) {
+            if (!map1.containsKey(character)) {
                 return false;
+            } else if (map1.containsKey(character) && map1.get(character) == 1) {
+                map1.remove(character);
+            } else if (map1.containsKey(character) && map1.get(character) > 1) {
+                map1.put(character, map1.get(character) - 1);
             }
         }
-
-        return true;
+        return map1.isEmpty();
     }
 }
